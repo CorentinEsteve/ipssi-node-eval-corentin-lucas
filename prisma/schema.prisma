@@ -11,8 +11,8 @@ model User {
   id       String    @id @default(uuid())
   username String    @unique @db.VarChar(64)
   password String
-  Post     Post[]
-  Comment  Comment[]
+  posts     Post[]
+  comments  Comment[]
 }
 
 model Post {
