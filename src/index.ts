@@ -1,7 +1,7 @@
 import express from 'express'
 import * as dotenv from 'dotenv'
 import userRoutes from './routes/user'
-import todoRoutes from './routes/todo'
+// import todoRoutes from './routes/todo'
 import { protect } from './modules/auth'
 import { createNewUser } from './handlers/user'
 
@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
     res.status(200).json({ message: 'Hello World!' });
 })
 
-app.use('/api', protect, [todoRoutes])
+// app.use('/api', protect, [todoRoutes])
 
 app.post('/signUp', createNewUser)
 

@@ -8,11 +8,11 @@ datasource db {
 }
 
 model User {
-  id        String    @id @default(uuid())
-  username  String    @unique @db.VarChar(64)
-  password  String
-  todoLists Post[]
-  Comment   Comment[]
+  id       String    @id @default(uuid())
+  username String    @unique @db.VarChar(64)
+  password String
+  Post     Post[]
+  Comment  Comment[]
 }
 
 model Post {
