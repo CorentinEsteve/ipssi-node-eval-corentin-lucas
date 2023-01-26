@@ -47,6 +47,9 @@ These instructions will get you a copy of the project up and running on your loc
 - `POST /api/users/login`: Log in an existing user
 - `DELETE /api/users/:id`: Delete an existing user (only for admin users)
 
+Example of request body for creating a user:
+```{ "username": "John", "password": "CrazyPotatoJohn" }```
+
 ### Post Routes
 - `GET /api/posts`: Get all blog posts
 - `GET /api/posts/:date`: Get all blog posts created after a specific date
@@ -57,6 +60,9 @@ These instructions will get you a copy of the project up and running on your loc
 - `DELETE /api/posts/:id`: Delete a specific post (only allowed for the author of the post or users with the admin role)
 - `GET /api/posts?from=1674560065`: Retrieve a list of all posts sorted by date, starting from the timestamp provided in the from query parameter
 
+Example of request body for creating a post (user needs to be logged in):
+```{ "title": "Hello World!", "content": "This is my first blog post!" }```
+
 ### Comment Routes
 - `GET /api/comments`: Get all comments
 - `GET /api/comments/:postId`: Get all comments for a specific post
@@ -64,6 +70,8 @@ These instructions will get you a copy of the project up and running on your loc
 - `DELETE /api/comments/:id`: Delete an existing comment (only for admin or the user who created the comment)
 - `PUT /api/comments/:id`: Update an existing comment (only for the user who created the comment)
 
+Example of request body for adding a comment (user needs to be logged in):
+```{ "postId":"c445b4b3-e8af-47e1-9061-48e342ea0100", "content": "This is a comment"}```
 ## Conclusion
 
 We hope you will enjoy using our API as much as we enjoyed building it. If you have any questions or need help, please don't hesitate to reach out to us. We are always available to help.
