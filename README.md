@@ -68,4 +68,4 @@ These instructions will get you a copy of the project up and running on your loc
 
 We hope you will enjoy using our API as much as we enjoyed building it. If you have any questions or need help, please don't hesitate to reach out to us. We are always available to help.
 
-Thank you for using our application!
+Thank you for using our application! 
