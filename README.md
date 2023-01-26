@@ -49,10 +49,10 @@ These instructions will get you a copy of the project up and running on your loc
 
 Example of request body for creating a user:
 
-```{
+`{
 "username": "John",
 "password": "CrazyPotatoJohn"
-}```
+}`
 
 ### Post Routes
 - `GET /api/posts`: Get all blog posts
@@ -66,10 +66,10 @@ Example of request body for creating a user:
 
 Example of request body for creating a post (user needs to be logged in):
 
-```{
+`{
 "title": "Hello World!",
 "content": "This is my first blog post!"
-}```
+}`
 
 ### Comment Routes
 - `GET /api/comments`: Get all comments
@@ -80,10 +80,10 @@ Example of request body for creating a post (user needs to be logged in):
 
 Example of request body for adding a comment (user needs to be logged in):
 
-```{
+`{
 "postId":"c445b4b3-e8af-47e1-9061-48e342ea0100",
 "content": "This is a comment"
-}```
+}`
 
 ## Conclusion
 
