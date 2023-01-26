@@ -35,9 +35,7 @@ These instructions will get you a copy of the project up and running on your loc
 `pnpm prisma migrate`
 
 4. Create the .env file
-`DATABASE_URL="postgres://ipssi_express_test_user:2p38nHy2QgSlLu9peIWQXQXOLashSUgJ@dpg-cf7b5rcgqg47vk2ej8pg-a.frankfurt-postgres.render.com/ipssi_express_test"`
-
-`JWT_SECRET="secret"`, but shhhh don't tell anyone.
+`DATABASE_URL="postgres://ipssi_express_test_user:2p38nHy2QgSlLu9peIWQXQXOLashSUgJ@dpg-cf7b5rcgqg47vk2ej8pg-a.frankfurt-postgres.render.com/ipssi_express_test"`, `JWT_SECRET="secret"`, but shhhh don't tell anyone.
 
 5. Start the development server
 `pnpm run dev`
