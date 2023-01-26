@@ -41,6 +41,7 @@ app.post('/posts',  async (req: Request, res: Response) => {
                 authorId: req.user.id,
                 title : req.body.title,
                 content: req.body.content,
+                published: req.body.published,
             }
         })
         res.status(201).json({ posts })
@@ -74,6 +75,7 @@ app.delete('/posts/:uuid', async (req, res) => {
 })
 
 app.put('/posts/:uuid', async (req, res) => {
+    if (req.user.role == "ADMIN" || req.user.id == req.body.authorId ) {
     try{
         const post = await db.post.update({
             where: {
@@ -82,15 +84,22 @@ app.put('/posts/:uuid', async (req, res) => {
             data: {
                 title: req.body.title,
                 content: req.body.content,
-            }
+                published: req.body.published,
+            },
         })
         res.status(200).json({ post })
     }
     catch(err){
         res.status(400).json({ message:"error update post" })
     }
+}
+else{
+    console.log(req.user.id + " " + req.body.authorId)
+    console.log(req.user.role)
+    res.status(401).json({ message: "You are not allowed to update this post" });
+}
+
 })
 
-app
 
 export default app
