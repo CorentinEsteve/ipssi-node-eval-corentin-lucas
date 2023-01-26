@@ -26,7 +26,11 @@ export const deleteUser: RequestHandler =  async (req, res) => {
             await db.user.delete({
                 where: {
                     id
-                }
+                },
+                include: {
+                    posts: true,
+                    comments: true,
+                    },
             })
             res.status(200).json({ message: 'User deleted.' });
         }
@@ -42,6 +46,7 @@ export const deleteUser: RequestHandler =  async (req, res) => {
                 },
                 include: {
                     posts: true, 
+                    comments: true,
                   }
             })
             res.status(200).json({ message: 'User deleted.' });
