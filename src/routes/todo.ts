@@ -1,9 +1,9 @@
-import express from 'express';
+import { Request, RequestHandler, Response, Router } from "express";
 import db from '../db';
 import { checkTodoOwnership } from '../handlers/todo';
 import { protect } from '../modules/auth'
 
-const app = express.Router()
+const app = Router()
 
 
 app.get('/todos', protect, async (req, res) => {

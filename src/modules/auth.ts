@@ -15,6 +15,7 @@ export const createJWT = (user: User) => {
     return token;
 }
 
+
 export const protect: RequestHandler = (req, res, next) => {
 
     const bearer = req.headers.authorization;
