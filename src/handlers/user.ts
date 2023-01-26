@@ -29,6 +29,7 @@ export const createNewUser: RequestHandler = async (req: TypedRequestParam, res)
         }))
         .then((user) => createJWT(user))
         .then((token) => res.status(201).json({ token }));
+        
 }
 
 export const signIn: RequestHandler = async (req: TypedRequestParam, res) => {

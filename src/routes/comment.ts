@@ -23,6 +23,25 @@ app.post('/comment', async (req: Request, res: Response) => {
     }
 })
 
+app.put('/comment/:uuid', async (req: Request, res: Response) => {
+    try{
+        validationResult(req).throw()
+        const comment = await db.comment.update({
+            where: {
+                id: req.params.uuid,
+            },
+            data: {
+                content: req.body.content,
+            }
+        })
+        res.status(201).json({ comment })
+    }
+    catch(err){
+        console.log("erreur : " + err)
+        res.status(400).json({ message:"error update comment" })
+    }
+})
+
 app.delete('/comment/:uuid', async (req, res) => {
     try{
         if (req.user.role !== "ADMIN") {
