@@ -58,7 +58,8 @@ Example of request body for creating a post (user needs to be logged in):
 
 `{
 "title": "Hello World!",
-"content": "This is my first blog post!"
+"content": "This is my first blog post!",
+"published": true
 }`
 
 ### Comment Routes
