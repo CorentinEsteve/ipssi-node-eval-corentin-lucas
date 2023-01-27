@@ -71,7 +71,7 @@ export const deletePost: RequestHandler = async (req, res) => {
                     comments: true,
                     },
             })
-            res.status(200).json({ post })
+            res.status(200).json({ message: "post deleted", post })
         }
         else {
             return res.status(403).json({ message: "You are not allowed to delete this post" });

@@ -22,6 +22,15 @@ export const getComments: RequestHandler = async (req, res) => {
 
 export const putComments: RequestHandler = async (req, res) => {
     try{
+        const authorId = await db.comment.findUnique({
+            where: {
+                id: req.params.uuid,
+            },
+            select: {
+                authorId: true,
+            }
+        })
+        if (req.user.id == authorId?.authorId ){
         validationResult(req).throw()
         const comment = await db.comment.update({
             where: {
@@ -31,7 +40,11 @@ export const putComments: RequestHandler = async (req, res) => {
                 content: req.body.content,
             }
         })
-        res.status(201).json({ comment })
+        res.status(201).json({ message: "Comment update" ,comment })
+    }
+    else {
+        res.status(401).json({ message: "You are not authorized to update this comment" })
+    }
     }
     catch(err){
         console.log("erreur : " + err)
@@ -41,13 +54,21 @@ export const putComments: RequestHandler = async (req, res) => {
 
 export const deleteComments: RequestHandler = async (req, res) => {
     try{
-        if (req.user.role !== "ADMIN") {
+        const authorId = await db.comment.findUnique({
+            where: {
+                id: req.params.uuid,
+            },
+            select: {
+                authorId: true,
+            }
+        })
+        if (req.user.id == authorId?.authorId ) {
             const comment = await db.comment.delete({
                 where: {
                     id: req.params.uuid,
                 },
             })
-        res.status(200).json({ comment })
+        res.status(200).json({ message: "comment delete", comment })
         if (comment.authorId !== req.user.id) {
             res.status(401).json({ message: "You are not authorized to delete this comment" })
         }
