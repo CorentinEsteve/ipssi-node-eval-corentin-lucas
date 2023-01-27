@@ -1,6 +1,7 @@
 import { RequestHandler } from 'express'
 import db from '../db'
 import { body, check, validationResult } from "express-validator";
+import { comparePassword } from '../modules/auth';
 
 export const getPosts: RequestHandler = async (req, res) => {
     const posts = await db.post.findMany({
@@ -53,28 +54,45 @@ export const postPost: RequestHandler = async (req, res) => {
 
 export const deletePost: RequestHandler = async (req, res) => {
     try{
-        if (req.user.role !== "ADMIN" ) {
+        const authorId = await db.post.findUnique({
+            where: {
+                id: req.params.uuid,
+            },
+            select: {
+                authorId: true,
+            }
+        })
+        if (req.user.role == "ADMIN" || req.user.id == authorId?.authorId ) {
             const post = await db.post.delete({
                 where: {
                     id: req.params.uuid,
-                },
-                select: {
-                    authorId: true,
-                }
+                }, 
+                include: {
+                    comments: true,
+                    },
             })
             res.status(200).json({ post })
-            if (post?.authorId !== req.user.id) {
-                return res.status(403).json({ message: "You are not allowed to delete this post" });
-            }
+        }
+        else {
+            return res.status(403).json({ message: "You are not allowed to delete this post" });
         }
     }
     catch(err){
+        console.log(err)
         res.status(400).json({ message:"error delete post" })
     }
 }
 
 export const putPost: RequestHandler = async (req, res) => {
-    if (req.user.role == "ADMIN" || req.user.id == req.body.authorId ) {
+    const authorId = await db.post.findUnique({
+        where: {
+            id: req.params.uuid,
+        },
+        select: {
+            authorId: true,
+        }
+    })
+    if (req.user.id == authorId?.authorId ){
         try{
             const post = await db.post.update({
                 where: {
@@ -97,5 +115,4 @@ export const putPost: RequestHandler = async (req, res) => {
         console.log(req.user.role)
         res.status(401).json({ message: "You are not allowed to update this post" });
     }
-    
-    }
+ }
