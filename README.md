@@ -91,12 +91,3 @@ Example of request body for adding a comment (user needs to be logged in):
 We hope you will enjoy using our API as much as we enjoyed building it. If you have any questions or need help, please don't hesitate to reach out to us. We are always available to help.
 
 Thank you for using our API! 
-
-## Installation
-
-Install my-project with npm
-
-```bash
-  npm install my-project
-  cd my-project
-```
