@@ -54,7 +54,7 @@ Example of request body for creating a user:
 - `DELETE /api/posts/:id`: Delete a specific post
 - `GET /api/posts?from=1674560065`: Retrieve a list of all posts sorted by date, starting from the timestamp provided in the from query parameter
 
-Example of request body for creating a post (user needs to be logged in):
+Example of request body for creating a post (after logging in):
 
 `{
 "title": "Hello World!",
