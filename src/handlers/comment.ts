@@ -3,7 +3,7 @@ import { body, check, validationResult } from "express-validator";
 import db from "../db";
 
 export const getComments: RequestHandler = async (req, res) => {
-    try{
+    try {
         validationResult(req).throw()
         const comment = await db.comment.create({
             data: {
@@ -14,14 +14,14 @@ export const getComments: RequestHandler = async (req, res) => {
         })
         res.status(201).json({ comment })
     }
-    catch(err){
+    catch (err) {
         console.log("erreur : " + err)
-        res.status(400).json({ message:"error creation comment" })
+        res.status(400).json({ message: "error creation comment" })
     }
 }
 
 export const putComments: RequestHandler = async (req, res) => {
-    try{
+    try {
         const authorId = await db.comment.findUnique({
             where: {
                 id: req.params.uuid,
@@ -30,30 +30,30 @@ export const putComments: RequestHandler = async (req, res) => {
                 authorId: true,
             }
         })
-        if (req.user.id == authorId?.authorId ){
-        validationResult(req).throw()
-        const comment = await db.comment.update({
-            where: {
-                id: req.params.uuid,
-            },
-            data: {
-                content: req.body.content,
-            }
-        })
-        res.status(201).json({ message: "Comment update" ,comment })
+        if (req.user.id == authorId?.authorId) {
+            validationResult(req).throw()
+            const comment = await db.comment.update({
+                where: {
+                    id: req.params.uuid,
+                },
+                data: {
+                    content: req.body.content,
+                }
+            })
+            res.status(201).json({ message: "Comment update", comment })
+        }
+        else {
+            res.status(401).json({ message: "You are not authorized to update this comment" })
+        }
     }
-    else {
-        res.status(401).json({ message: "You are not authorized to update this comment" })
-    }
-    }
-    catch(err){
+    catch (err) {
         console.log("erreur : " + err)
-        res.status(400).json({ message:"error update comment" })
+        res.status(400).json({ message: "error update comment" })
     }
 }
 
 export const deleteComments: RequestHandler = async (req, res) => {
-    try{
+    try {
         const authorId = await db.comment.findUnique({
             where: {
                 id: req.params.uuid,
@@ -62,19 +62,21 @@ export const deleteComments: RequestHandler = async (req, res) => {
                 authorId: true,
             }
         })
-        if ( req.user.role == "ADMIN"  ||  req.user.id == authorId?.authorId ) {
+        if (req.user.role == "ADMIN" || req.user.id == authorId?.authorId) {
             const comment = await db.comment.delete({
                 where: {
                     id: req.params.uuid,
                 },
             })
-        res.status(200).json({ message: "comment delete", comment })
-        if (comment.authorId !== req.user.id) {
+            res.status(200).json({ message: "Comment successfully deleted", comment })
+        }
+        else {
             res.status(401).json({ message: "You are not authorized to delete this comment" })
+            console.log(req.user.role)
         }
     }
-}
-    catch(err){
-        res.status(400).json({ message:"error delete comment" })
+
+    catch (err) {
+        res.status(400).json({ message: "error delete comment" })
     }
 }
