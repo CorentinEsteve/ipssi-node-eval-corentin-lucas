@@ -32,59 +32,133 @@ For example, to retrieve data from the database, you can make a GET request to t
 
 ## Application Routes
 
-### User Routes
-- ```POST /api/users/signUp```: Create a new user
+## User Routes
 
-`{
-"username": "John",
-"password": "CrazyPotatoJohn"
-}`
-- `POST /api/users/signIn`: Log in an existing user
-- `DELETE /api/users/:id`: Delete an existing user (only for admin users)
+### Create a new user
+Méthode POST
+```HTML
+  https://ipssi-project-node-lucas-corentin.onrender.com/signUp
+```
+Body
+```JSON
+{
+  "username":"Pseudo",
+  "password":"Monsupermotdepasse"
+}
+```
+### Log in an existing user
 
-Example of request body for creating a user:
+Méthode POST
+```HTML
+  https://ipssi-project-node-lucas-corentin.onrender.com/signIn
+```
+Body
+```JSON
+{
+  "username":"Pseudo",
+  "password":"Monsupermotdepasse"
+}
+```
+### Delete an existing user (only for admin users)
 
-`{
-"username": "John",
-"password": "CrazyPotatoJohn"
-}`
+Méthode DELETE
+```HTML
+  https://ipssi-project-node-lucas-corentin.onrender.com/api/user/:id
+```
+## Post Routes
 
-You can use this one for admin permissions:
-`{
-"username": "admin",
-"password": "admin"
-}`
+Méthode GET
 
-### Post Routes
-- `GET /api/posts`: Get all blog posts
-- `GET /api/posts/:timestamp`: Get all blog posts created after a specific date
-- `POST /api/posts`: Create a new blog post
-- `DELETE /api/posts/:uuid`: Delete an existing blog post
-- `GET /api/posts/:id`: Retrieve a specific post
-- `PUT /api/posts/:id`: Update a specific post
-- `DELETE /api/posts/:id`: Delete a specific post
+### Get all blog posts
+Méthode GET
+```HTML
+  https://ipssi-project-node-lucas-corentin.onrender.com/api/posts
+```
 
-Example of request body for creating a post (after logging in):
 
-`{
-"title": "Hello World!",
+
+### Get all blog posts created after a specific timestamp
+Méthode GET
+```HTML
+  https://ipssi-project-node-lucas-corentin.onrender.com/api/posts/:timestamp
+```
+
+
+
+### Create a new blog post
+Méthode POST
+```HTML
+  https://ipssi-project-node-lucas-corentin.onrender.com/api/posts
+```
+Body 
+```JSON
+{ 
+"title": "Hello world!",
 "content": "This is my first blog post!",
 "published": true
-}`
+}
+```
 
-### Comment Routes
-- `GET /api/comments`: Get all comments
-- `GET /api/comments/:postId`: Get all comments for a specific post
-- `POST /api/comments`: Create a new comment
-- `DELETE /api/comments/:id`: Delete an existing comment
-- `PUT /api/comments/:id`: Update an existing comment
 
-Example of request body for adding a comment (user needs to be logged in):
 
-`{
-"postId":"c445b4b3-e8af-47e1-9061-48e342ea0100",
-"content": "This is a comment"
-}`
+### Update a specific post
+Méthode PUT
+```HTML
+https://ipssi-project-node-lucas-corentin.onrender.com/api/posts/:id
+```
+
+Body
+```JSON
+{ 
+"title": "Hello world 0 !",
+"content": "This is my first blog post 0 !",
+"published": false
+}
+```
+
+
+
+### Delete a specific post
+Méthode DELETE
+```HTML
+https://ipssi-project-node-lucas-corentin.onrender.com/api/posts/:id
+```
+
+## Comment Routes
+
+### Create a new comment
+
+Méthode POST
+```HTML
+https://ipssi-project-node-lucas-corentin.onrender.com/api/comment
+```
+```JSON
+{
+"postId":"d863dd2f-f8fb-453e-b44f-a04b6fec0960", 
+"content": "This is a comment" 
+}
+```
+### Update an existing comment
+
+Méthode PUT
+```HTML
+https://ipssi-project-node-lucas-corentin.onrender.com/api/comment/:id
+```
+Body
+```JSON
+{
+"content": "This is a comment" 
+}
+```
+### Delete an existing comment
+
+Méthode DELETE
+```HTML
+https://ipssi-project-node-lucas-corentin.onrender.com/api/comment/:id
+```
+
+
+
 
 ## Conclusion
 
