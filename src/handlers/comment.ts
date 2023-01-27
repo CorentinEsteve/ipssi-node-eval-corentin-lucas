@@ -62,7 +62,7 @@ export const deleteComments: RequestHandler = async (req, res) => {
                 authorId: true,
             }
         })
-        if (req.user.id == authorId?.authorId ) {
+        if ( req.user.role == "ADMIN"  ||  req.user.id == authorId?.authorId ) {
             const comment = await db.comment.delete({
                 where: {
                     id: req.params.uuid,
