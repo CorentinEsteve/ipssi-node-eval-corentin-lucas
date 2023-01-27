@@ -33,8 +33,13 @@ For example, to retrieve data from the database, you can make a GET request to t
 ## Application Routes
 
 ### User Routes
-- `POST /api/users/signup`: Create a new user
-- `POST /api/users/login`: Log in an existing user
+- ```POST /api/users/signUp```: Create a new user
+
+`{
+"username": "John",
+"password": "CrazyPotatoJohn"
+}`
+- `POST /api/users/signIn`: Log in an existing user
 - `DELETE /api/users/:id`: Delete an existing user (only for admin users)
 
 Example of request body for creating a user:
@@ -46,13 +51,12 @@ Example of request body for creating a user:
 
 ### Post Routes
 - `GET /api/posts`: Get all blog posts
-- `GET /api/posts/:date`: Get all blog posts created after a specific date
+- `GET /api/posts/:timestamp`: Get all blog posts created after a specific date
 - `POST /api/posts`: Create a new blog post
 - `DELETE /api/posts/:uuid`: Delete an existing blog post
 - `GET /api/posts/:id`: Retrieve a specific post
 - `PUT /api/posts/:id`: Update a specific post
 - `DELETE /api/posts/:id`: Delete a specific post
-- `GET /api/posts?from=1674560065`: Retrieve a list of all posts sorted by date, starting from the timestamp provided in the from query parameter
 
 Example of request body for creating a post (after logging in):
 
