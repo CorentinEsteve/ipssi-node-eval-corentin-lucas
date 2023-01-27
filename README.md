@@ -49,6 +49,12 @@ Example of request body for creating a user:
 "password": "CrazyPotatoJohn"
 }`
 
+You can use this one for admin permissions:
+`{
+"username": "admin",
+"password": "admin"
+}`
+
 ### Post Routes
 - `GET /api/posts`: Get all blog posts
 - `GET /api/posts/:timestamp`: Get all blog posts created after a specific date
