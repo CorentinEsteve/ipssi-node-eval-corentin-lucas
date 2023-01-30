@@ -61,7 +61,7 @@ Body
 ```
 ### Delete an existing user (only for admin users)
 
-Méthode DELETE
+DELETE Method
 ```HTML
   https://ipssi-project-node-lucas-corentin.onrender.com/api/user/:id
 ```
@@ -70,7 +70,7 @@ Méthode DELETE
 GET Method
 
 ### Get all blog posts
-Méthode GET
+GET Method
 ```HTML
   https://ipssi-project-node-lucas-corentin.onrender.com/api/posts
 ```
