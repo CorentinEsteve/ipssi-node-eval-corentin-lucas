@@ -67,8 +67,6 @@ DELETE Method
 ```
 ## Post Routes
 
-GET Method
-
 ### Get all blog posts
 GET Method
 ```HTML
