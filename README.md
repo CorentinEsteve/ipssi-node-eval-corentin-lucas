@@ -35,7 +35,7 @@ For example, to retrieve data from the database, you can make a GET request to t
 ## User Routes
 
 ### Create a new user
-Méthode POST
+POST Method
 ```HTML
   https://ipssi-project-node-lucas-corentin.onrender.com/signUp
 ```
@@ -48,7 +48,7 @@ Body
 ```
 ### Log in an existing user
 
-Méthode POST
+POST Method
 ```HTML
   https://ipssi-project-node-lucas-corentin.onrender.com/signIn
 ```
@@ -67,7 +67,7 @@ Méthode DELETE
 ```
 ## Post Routes
 
-Méthode GET
+GET Method
 
 ### Get all blog posts
 Méthode GET
@@ -78,7 +78,7 @@ Méthode GET
 
 
 ### Get all blog posts created after a specific timestamp
-Méthode GET
+GET Method
 ```HTML
   https://ipssi-project-node-lucas-corentin.onrender.com/api/posts/:timestamp
 ```
@@ -86,7 +86,7 @@ Méthode GET
 
 
 ### Create a new blog post
-Méthode POST
+POST Method
 ```HTML
   https://ipssi-project-node-lucas-corentin.onrender.com/api/posts
 ```
@@ -102,7 +102,7 @@ Body
 
 
 ### Update a specific post
-Méthode PUT
+PUT Method
 ```HTML
 https://ipssi-project-node-lucas-corentin.onrender.com/api/posts/:id
 ```
@@ -119,7 +119,7 @@ Body
 
 
 ### Delete a specific post
-Méthode DELETE
+DELETE Method
 ```HTML
 https://ipssi-project-node-lucas-corentin.onrender.com/api/posts/:id
 ```
@@ -128,7 +128,7 @@ https://ipssi-project-node-lucas-corentin.onrender.com/api/posts/:id
 
 ### Create a new comment
 
-Méthode POST
+POST Method
 ```HTML
 https://ipssi-project-node-lucas-corentin.onrender.com/api/comment
 ```
@@ -140,7 +140,7 @@ https://ipssi-project-node-lucas-corentin.onrender.com/api/comment
 ```
 ### Update an existing comment
 
-Méthode PUT
+PUT Method
 ```HTML
 https://ipssi-project-node-lucas-corentin.onrender.com/api/comment/:id
 ```
@@ -152,7 +152,7 @@ Body
 ```
 ### Delete an existing comment
 
-Méthode DELETE
+DELETE Method
 ```HTML
 https://ipssi-project-node-lucas-corentin.onrender.com/api/comment/:id
 ```
